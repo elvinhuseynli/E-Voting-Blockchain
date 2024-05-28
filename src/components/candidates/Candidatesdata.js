@@ -1,39 +1,48 @@
-// Handles The SaveCandidate Function
-
 import { useState, useEffect } from "react";
 import Wallet from "../Wallet/Wallet";
 
-const CandidatesData = ({ saveCandidates }) => {
-    // ******************
+const CandidatesData = ({ saveIssues }) => {
     const [state, setState] = useState({
         web: null,
         contract: null,
         accounts: null
-    })
-    const saveState = (state) => {
-        setState(state);
-    }
-    // ******************
+    });
 
+    const saveState = (newState) => {
+        setState(newState);
+    };
 
-    const fetchData = async () => {
-        const { contract } = state;
-        if (!contract) {
-            return;
-        }
-        const totalCandidates = await contract.methods.candidatesCount().call();
-        console.log(totalCandidates);
+    useEffect(() => {
+        const fetchData = async () => {
+            const { contract } = state;
+            if (!contract) {
+                return;
+            }
+            try {
+                const issueCount = await contract.methods.issueCount().call();
+                const issues = [];
+                for (let i = 1; i <= issueCount; i++) {
+                    const issue = await contract.methods.issues(i).call();
+                    issues.push({
+                        id: i,
+                        description: issue.description,
+                        yesCount: issue.yesCount,
+                        noCount: issue.noCount,
+                        isOpen: issue.isOpen
+                    });
+                }
+                saveIssues(issues);
+            } catch (error) {
+                console.error("Error fetching issues data:", error);
+            }
+        };
 
-        const candidatesData = await contract.methods.getCandidates().call();
-        saveCandidates(candidatesData);
-    }
-    fetchData();
+        fetchData();
+    }, [state.contract]);
 
-
-    return (<>
+    return (
         <Wallet saveState={saveState} />
-    </>);
-
+    );
 };
 
 export default CandidatesData;

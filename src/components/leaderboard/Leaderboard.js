@@ -1,46 +1,41 @@
-import { useState, useEffect } from "react";
 import './Leaderboard.css'; 
-import CandidatesData from "../candidates/Candidatesdata.js";
 
-const Leaderboard = () => {
-
-    const [candidates, setCandidates] = useState([]);
-
-    const saveCandidates= (arr) => {
-        setCandidates(arr);
-    }
-
+const Leaderboard = ({ state, issues }) => {
     return (
         <>
-            <CandidatesData saveCandidates={saveCandidates}/>
             <div className="body">
                 <div className="table">
                     <div className="table-header">
                         <h1>Leaderboard</h1>
                     </div>
                     <div className="table-body">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Candidate Name</th>
-                                    <th>Votes</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {candidates.map((candidate) => (
-                                    <tr key={candidate.id}>
-                                        <td>{candidate.id}</td>
-                                        <td>{candidate.name}</td>
-                                        <td><strong>{candidate.voteCount}</strong></td>
+                        {issues.length > 0 ? (
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Issue</th>
+                                        <th>Yes Votes</th>
+                                        <th>No Votes</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {issues.map((issue) => (
+                                        <tr key={issue.id}>
+                                            <td>{issue.id}</td>
+                                            <td>{issue.description}</td>
+                                            <td><strong>{issue.yesCount}</strong></td>
+                                            <td><strong>{issue.noCount}</strong></td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        ) : (
+                            <p>There are no issues opened.</p>
+                        )}
                     </div>
                 </div>
             </div>
-            {/* <Vote candidates={candidates} state={state}/> */}
         </>
     );
 };

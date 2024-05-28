@@ -13,8 +13,6 @@ function App({ }) {
     { path: '/votepage', element: <VotePage /> },
 
   ])
-
-
   return (
     <>
       <RouterProvider router={router} />
