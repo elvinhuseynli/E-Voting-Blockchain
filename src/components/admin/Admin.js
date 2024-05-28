@@ -20,9 +20,6 @@ const Admin = () => {
 
     return (
         <>
-            <div className="admin-note">
-                <p className='admin-welcome'>Welcome Admin!</p>
-            </div>
             <Wallet saveState={saveState}></Wallet>
             <Header></Header>
             <UpdateCandi state={state}></UpdateCandi>

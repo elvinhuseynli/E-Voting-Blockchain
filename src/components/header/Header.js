@@ -25,13 +25,13 @@ const Header = () => {
 
     <Wallet saveAccount={saveAccount} saveConnected={saveConnected}/>
 
-        <div className="header">
+    <div className="header">
             {connected ? (
-                <h3 className="connectStatus">Connected Account = {account[0]}</h3>
+                <h3 className="connectStatus">Connected Account: {account[0]}</h3>
             ) : (
                 <h3 className="connectStatus">Please connect your account!</h3>
             )}
-            <button className="connectStatus" style={{ display: 'none' }}>Click Me</button>
+            <button className="connectBtn" style={{ display: 'none' }}>Click Me</button>
         </div>
 
 

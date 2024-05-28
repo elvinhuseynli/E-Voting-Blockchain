@@ -63,6 +63,7 @@ const UpdateCandi = ({ state }) => {
                 </div>
             </div>
 
+
         </>
     );
 }

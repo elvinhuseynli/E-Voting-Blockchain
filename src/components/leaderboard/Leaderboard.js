@@ -12,14 +12,13 @@ const Leaderboard = () => {
 
     return (
         <>
-        <CandidatesData saveCandidates={saveCandidates}/>
-        
+            <CandidatesData saveCandidates={saveCandidates}/>
             <div className="body">
                 <div className="table">
-                    <div className="table_header">
+                    <div className="table-header">
                         <h1>Leaderboard</h1>
                     </div>
-                    <div className="table_body">
+                    <div className="table-body">
                         <table>
                             <thead>
                                 <tr>
@@ -41,7 +40,7 @@ const Leaderboard = () => {
                     </div>
                 </div>
             </div>
-            {/* <Vote candidates = {candidates} state={state}/> */}
+            {/* <Vote candidates={candidates} state={state}/> */}
         </>
     );
 };

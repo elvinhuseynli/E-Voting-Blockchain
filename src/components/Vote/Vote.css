@@ -1,11 +1,22 @@
+:root {
+    --primary-color: #ff6f61;
+    --secondary-color: #5cdb95;
+    --background-color: #05386b;
+    --text-color: #edf5e1;
+    --hover-color: #379683;
+}
+
 .body11 {
     height: 120px;
     width: 100%;
-    background-color: black;
+    background-color: var(--background-color);
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
     overflow-x: hidden;
+    padding: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
 }
 
 select {
@@ -13,128 +24,124 @@ select {
     padding: 10px 20px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: 0.5px;
     cursor: pointer;
-    background-color: var(--color-blue);
-    color: #ffffff;
-    border: 6px solid var(--color-blue);
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: 2px solid var(--primary-color);
     border-radius: 5px;
+    appearance: none;
     background-image: url("arrow-down.png");
     background-repeat: no-repeat;
-    background-size: 47px;
-    background-position: 247px 0.5px;
+    background-size: 16px;
+    background-position: right 15px center;
     outline: none;
-    box-shadow: 0 0 20px rgba(20, 20, 30, 0.25);
+    box-shadow: 0 0 10px rgba(20, 20, 30, 0.25);
 }
 
 select:hover {
-    border: 6px solid #4317c7;
+    border-color: var(--hover-color);
 }
 
 select option {
-    background-color: black;
-    letter-spacing: 1.2px;
+    background-color: var(--background-color);
+    color: var(--text-color);
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .VoteBtn {
-    width: 120px;
-    margin-left: 20px;
     padding: 12px 24px;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16px;
     letter-spacing: 0.5px;
     cursor: pointer;
-    background-color: var(--color-blue);
-    color: #ffffff;
-    border: 2px solid var(--color-blue);
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    border: 2px solid var(--secondary-color);
     border-radius: 5px;
     outline: none;
-    box-shadow: 0 0 20px rgba(20, 20, 30, 0.25);
+    box-shadow: 0 0 10px rgba(20, 20, 30, 0.25);
 }
 
 .VoteBtn:hover {
-    background-color: var(--color-blue);
-    border: 2px solid #8c66ff;
+    background-color: var(--hover-color);
+    border-color: var(--hover-color);
 }
 
-.popup{
+.container1 {
+    position: relative;
+}
+
+.popup {
     width: 400px;
-    background: #d1cfcf;
+    background: var(--text-color);
     border-radius: 6px;
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.1);
     text-align: center;
-    padding: 0 30px 30px;
-    color: #333;
+    padding: 1.5rem;
+    color: var(--background-color);
     visibility: hidden;
-    transition: transform 0.2s, top 0.2s;
-    border-radius: 20px 0 20px 0px ;
-    border-radius: .6rem;
-    box-shadow: 0 .4rem .8rem rgba(0, 0, 0, 0.948);
+    transition: transform 0.3s, top 0.3s;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
 }
 
-.open-popup{
+.open-popup {
     visibility: visible;
     top: 50%;
     transform: translate(-50%, -50%) scale(1);
-
 }
-
-
 
 .img-popup {
     width: 80px;
     height: 80px;
-    background-image: url('popup.png');
-    background-size: cover;
-    background-position: center;
-    margin-top: -50px;
-    border-radius: 50px;
+    margin-top: -40px;
+    border-radius: 50%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-
+    background-color: var(--primary-color);
+    display: inline-block;
 }
 
-.img-popup-cross {
-    background-image: url('cross.png');
-
-}
-
-.img-popup-tick {
-    background-image: url('tick.png');
-
-}
-
-.open-popup-cross{
-    visibility: visible;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(1);
-
-}
-
-.popup h2{
-    font-size: 38px;
+.popup-h2 {
+    font-size: 24px;
     font-weight: 500;
     margin: 20px 0 10px;
 }
 
-.popup button{
-    width: 100%;
-    margin-top: 50px;
-    padding: 10px 0;
-    background: var(--color-blue);
-    color: #fff;
-    border: 0;
-    outline: none;
-    font-size: 18px;
-    border-radius: 4px;
-    cursor: pointer;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+.popup-p {
+    font-size: 16px;
+    color: var(--background-color);
 }
 
+.btn {
+    width: 100%;
+    padding: 10px 0;
+    background: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
 
+.btn:hover {
+    background: var(--hover-color);
+}
+
+@media (max-width: 768px) {
+    .body11 {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    select, .VoteBtn {
+        width: 90%;
+    }
+}

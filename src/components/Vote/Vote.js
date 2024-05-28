@@ -7,7 +7,7 @@ const Vote = ({ state }) => {
 
     const [candidates, setCandidates] = useState([]);
 
-    const saveCandidates= (arr) => {
+    const saveCandidates = (arr) => {
         setCandidates(arr);
     }
 
@@ -61,7 +61,7 @@ const Vote = ({ state }) => {
         VoteStatus && console.log(VoteStatus)
         setVoted(VoteStatus);
         if (VoteStatus === true) {
-           // console.log("Already Voted!!");
+            // console.log("Already Voted!!");
             const popuph2 = document.querySelector('.popup-h2');
             const popupP = document.querySelector('.popup-p');
             const popupimg = document.querySelector('.img-popup');
@@ -96,7 +96,7 @@ const Vote = ({ state }) => {
             }
             popuph2.innerHTML = "Congrats!"
             popupP.innerHTML = "Your Vote is Submitted on the Blockchain!"
-            
+
         } else {
             console.log("No Candidate Selected, Caller: HandleVote")
         }
@@ -105,30 +105,31 @@ const Vote = ({ state }) => {
 
     return (
         <>
-        <CandidatesData saveCandidates={saveCandidates}/>
+            <CandidatesData saveCandidates={saveCandidates} />
             <div className="body11">
-                <select
-                    id="candidatesDropdown"
-                    name="candidatesDropdown"
-                    value={selectedCandidate}
-                    onChange={handleSelectChange} >
-                    <option value="" selected class="selected">Select a candidate</option>
-                    {candidates.map((candidate) => (
-                        <option key={candidate.id} value={candidate.id}>
-                            {candidate.name}
-                        </option>
-                    ))}
-                </select>
-                <button className="VoteBtn" onClick={openPopup}>VOTE</button>
-                <div className="container1">
-                    <div className="popup">
-                        <img className="img-popup" />
-                        <h2 className="popup-h2">Please Wait!</h2>
-                        <p className="popup-p">Your Transaction is in progress!</p>
-                        <button type="submit" class="btn" onClick={closePopup}>Close</button>
-                    </div>
+            <select
+                id="candidatesDropdown"
+                name="candidatesDropdown"
+                value={selectedCandidate}
+                onChange={handleSelectChange}
+            >
+                <option value="" className="selected">Select a candidate</option>
+                {candidates.map((candidate) => (
+                    <option key={candidate.id} value={candidate.id}>
+                        {candidate.name}
+                    </option>
+                ))}
+            </select>
+            <button className="VoteBtn" onClick={openPopup}>VOTE</button>
+            <div className="container1">
+                <div className="popup">
+                    <img className="img-popup" alt="popup" />
+                    <h2 className="popup-h2">Please Wait!</h2>
+                    <p className="popup-p">Your Transaction is in progress!</p>
+                    <button type="submit" className="btn" onClick={closePopup}>Close</button>
                 </div>
             </div>
+        </div>
 
 
         </>
